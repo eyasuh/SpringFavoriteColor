@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        html {
+            background: url(https://images.pexels.com/photos/350784/pexels-photo-350784.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260) no-repeat center center fixed;
+            background-size: cover;
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+<body>
+    <form action="#" th:action="@{/form}" th:object="${question}" method="post" style="background-color: aqua;">
+        What is your name?
+        <input type="text" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">
+        </span><br>
+        What is your Quest?
+        <input type="text" th:field="*{quest}">
+        <span th:if="${#fields.hasErrors('quest')}"
+              th:errors="*{quest}">
+        </span><br>
+        <span th:text="${randNum}==1 ? 'What is your favorite color?'
+        :'What is the airspeed velocity of an unladen swallow?'"></span>
+        <input type="text" th:field="*{color}">
+        <span th:if="${#fields.hasErrors('color')}"
+              th:errors="*{color}">
+        </span><br>
+        <input type ="submit" value ="Answer">
+    </form>
+
+</body>
+</html>
+
